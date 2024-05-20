@@ -1,0 +1,11 @@
+<div class="grid-item grid-item--width{{ .item.cols }} grid-item--height{{ .item.rows }}">
+     {{ $imagePath := (print "/photos/gallery/" .item.image )}}
+
+     {{ $image := resources.Get $imagePath }}
+     {{ $thumb := $image.Process "resize 1328x" }}
+
+     <div class="gallery-item-inner" style="background-image: url('{{ $thumb.RelPermalink }}');"
+          data-gallery-index="{{.index}}">
+     </div>
+
+</div>

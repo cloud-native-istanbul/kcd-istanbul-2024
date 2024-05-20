@@ -1,0 +1,53 @@
+---
+title: "Gallery"
+linkTitle: "Gallery"
+type: _default
+layout: single
+---
+
+<div class="container text-center mb-3">
+    <div class="col-12">
+        <h1 class="display-6" id="speakers">Impressions from KCD Istanbul 2024</h1>
+        <p xmlns:cc="http://creativecommons.org/ns#" >All photos are marked with <a href="https://creativecommons.org/publicdomain/zero/1.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC0 1.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/zero.svg?ref=chooser-v1" alt=""></a></p>
+    </div>
+</div>
+
+{{< gallery >}}
+
+<script>
+    $(document).ready(function(){
+        $('.grid').masonry({
+            itemSelector: '.grid-item',
+            columnWidth: '.grid-sizer',
+            percentPosition: true
+        });
+
+        let $galleryItemInner = $('.gallery-item-inner');
+        $galleryItemInner.on('mouseenter', function() {
+            $(this).find('.gallery-item-overlay').addClass('shown');
+        });
+        $galleryItemInner.on('mouseleave', function() {
+            $(this).find('.gallery-item-overlay').removeClass('shown');
+        });
+
+        const $dynamicGallery = document.getElementById("gallery");
+        const dynamicGallery = window.lightGallery($dynamicGallery, {
+            licenseKey: "0CACA56D-345D4F94-98964EDA-1C1EFD1F",
+            dynamicEl: galleryData,
+            dynamic: true,
+            hash: false,
+            rotate: false,
+            plugins: [
+                lgZoom,
+                lgThumbnail,
+                lgVideo,
+                lgFullscreen,
+            ],
+        });
+        $galleryItemInner.on("click", function(){
+            const index = parseInt($(this).attr("data-gallery-index"), 10);
+            dynamicGallery.openGallery(index);
+        });
+
+    });
+</script>
