@@ -1,11 +1,7 @@
-randomize_photos:
-	echo "Randomizing photos..."
-	python3 assets/photos/randomize.py
-
-build: randomize_photos
+build:
 	echo "Building the site..."
 	hugo
 
-serve: randomize_photos
+serve:
 	echo "Serving the site..."
 	hugo server
