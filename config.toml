@@ -1,3 +1,4 @@
 baseURL = 'http://hugo-quickstart-template.netlify.com'
 languageCode = 'en-us'
 title = 'KCD Istanbul 2024'
+timeout = 75000

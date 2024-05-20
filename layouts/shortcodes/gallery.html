@@ -1,0 +1,22 @@
+<div id="gallery" class="container">
+    <div class="grid">
+        <div class="grid-sizer"></div>
+        {{ range $index, $item := $.Site.Data.gallery }}
+        {{ partial "galleryItem.html" (dict "index" $index "item" $item) }}
+        {{ end }}
+    </div>
+</div>
+
+<script>
+    const galleryData = [
+        {{ range $.Site.Data.gallery }}
+            {{ $imagePath := (print "/photos/gallery/" .image )}}
+            {{ $image := resources.Get $imagePath }}
+            {{ $thumb := $image.Process "resize 256x" }}
+            {
+                "src": "{{ $image.RelPermalink }}",
+                "thumb": "{{ $thumb.RelPermalink }}",
+            },
+        {{ end }}
+    ];
+</script>
