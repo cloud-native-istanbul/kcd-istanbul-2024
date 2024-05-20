@@ -5,3 +5,7 @@ randomize_photos:
 build: randomize_photos
 	echo "Building the site..."
 	hugo
+
+serve: randomize_photos
+	echo "Serving the site..."
+	hugo server
